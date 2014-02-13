@@ -1,4 +1,5 @@
 RsFeedAggregator::Application.routes.draw do
+  resources :rss_feeds
   resources :topics
 
   # The priority is based upon order of creation: first created -> highest priority.
