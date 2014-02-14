@@ -17,6 +17,15 @@ gem 'turbolinks'
 
 gem 'jbuilder', '~> 1.2'
 
+group :development, :test do 
+  gem 'rspec-rails', '2.13.1'
+  gem 'guard-rspec', '2.5.0'
+end
+
+group :test do 
+ gem 'capybara'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
