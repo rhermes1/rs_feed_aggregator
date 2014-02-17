@@ -1,7 +1,7 @@
 RsFeedAggregator::Application.routes.draw do
   resources :rss_feeds
   resources :topics
-
+  root 'topics#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

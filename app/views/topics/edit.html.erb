@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+<%= link_to 'Back', root_path %> |
+<%#= link_to 'RSS Feed', new_rss_feed %> |
+<%= link_to 'Delete', @topic, method: :delete,
+  data: { confirm: 'Are you sure?' } %>

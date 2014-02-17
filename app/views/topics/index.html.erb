@@ -1,28 +1,12 @@
-<% provide(:title, 'rss Topics') %>
+<% provide(:title, 'RSS Topics') %>
 <h1>All rss-Topics</h1>
-
+<%= link_to 'New Topic', new_topic_path %>
 <table>
-  <thead>
-    <tr>
-      <th>Topic</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @topics.each do |topic| %>
-      <tr>
-        <td><%= topic.topic %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <h3><%= topic.topic %></h3>
+        <%= link_to 'Show', topic %> |
+        <%= link_to 'Edit', edit_topic_path(topic) %>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Topic', new_topic_path %>
