@@ -1,8 +1,10 @@
-<%= form_for(@topic) do |f| %>
+<%= form_for(setup_topic(@topic)) do |f| %>
   <% if @topic.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@topic.errors.count, "error") %>
-            prohibited this topic from being saved:</h2>
+      <h2>
+        <%= pluralize(@topic.errors.count, "error") %>
+        prohibited this topic from being saved:
+      </h2>
       <ul>
       <% @topic.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,11 +12,21 @@
       </ul>
     </div>
   <% end %>
-
+  <h2>Topic</h2>
   <div class="field">
-    <p></p>
     <%= f.text_field :topic %>
   </div>
+  <h2>Rss Link</h2>
+  <%= f.fields_for :rsses do |ff| %>
+    <div>
+      <%= ff.text_field :link %>
+  
+      <% if ff.object.persisted? %>
+        <%= ff.check_box :_destroy %>
+        <%= ff.label :_destroy, "Destroy" %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

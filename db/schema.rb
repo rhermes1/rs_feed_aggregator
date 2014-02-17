@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213144632) do
+ActiveRecord::Schema.define(version: 20140218090355) do
 
-  create_table "rss_feeds", force: true do |t|
-    t.string   "content"
+  create_table "rsses", force: true do |t|
+    t.string   "link"
     t.integer  "topic_id"
     t.datetime "created_at"
     t.datetime "updated_at"

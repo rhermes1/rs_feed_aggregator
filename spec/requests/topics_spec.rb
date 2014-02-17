@@ -21,4 +21,15 @@ describe "Topics" do
       expect(page).to have_title('RSS Topics')
     end
   end
+  
+  #describe "Show Topic" do
+  #  before { @topic = Topic.new(topic: "Mahallo") }
+  #  before { visit "/topics/#{@topic.id}" }
+  #  it { should have_content(@topic.topic) }
+  #  it { should have_title('Show Topic') }
+  #  it "should have right links" do
+  #    click_link "Back"
+  #    expect(page).to have_title('RSS Topics')
+  #  end
+  #end
 end
