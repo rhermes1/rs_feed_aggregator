@@ -1,32 +1,41 @@
 <%= form_for(setup_topic(@topic)) do |f| %>
-  <% if @topic.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@topic.errors.count, "error") %>
-        prohibited this topic from being saved:
-      </h2>
-      <ul>
-      <% @topic.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="new_contact">
+    <% if @topic.errors.any? %>
+      <div id="error_explanation">
+        <h2><a>
+          <%= pluralize(@topic.errors.count, "error") %>
+          prohibited this topic from being saved:
+        </a></h2>
+        <ul>
+        <% @topic.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <legend><a>Topic</a></legend>
+    <div class="field">
+      <%= f.text_field :topic %>
     </div>
-  <% end %>
-  <h2>Topic</h2>
-  <div class="field">
-    <%= f.text_field :topic %>
   </div>
-  <h2>Rss Link</h2>
-  <%= f.fields_for :rsses do |ff| %>
-    <div>
-      <%= ff.text_field :link %>
-      <% if ff.object.persisted? %>
-        <p style="display: inline-block"><%= ff.check_box :_destroy %>
-        <%= ff.label :_destroy, "Delete Link" %></p>
-      <% end %>
-    </div>
-  <% end %>
+
+  <div class="new_contact">
+    <legend><a>Rss Link</a></legend>
+    <%= f.fields_for :rsses do |ff| %>
+      <div>
+        <%= ff.text_field :link %>
+        <% if ff.object.persisted? %>
+          <p style="display: inline-block">
+            <%= ff.check_box :_destroy %>
+          </p>
+          <p style="display: inline-block">
+            <%= ff.label :_destroy, "Delete Link" %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "btn btn-middle" %>
   </div>
 <% end %>

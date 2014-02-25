@@ -1,17 +1,85 @@
 @import "bootstrap";
+$border_color: #DDDDDD;
+$news_c_color: #EEEEEE;
+$news_color: #F9F9F9;
+/* universal */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
+html {
+  overflow-y: scroll;
+}
+body .container {
+  padding-left: 30px;
+  padding-right: 30px;
+  width: auto;
+}
+body .custom_body {
+  width: auto;
+  padding-top: 60px;
+}
+
+/* HEADER */
+
+.navbar-inner {
+  padding-bottom: 5px;
+  height: 40px;
+  .container {
+    width: auto;
+  }
+}
+
+.navbar .nav > li.header_link {
+  border: 0.5px solid $border_color;
+  margin-right: 5px;
+  margin-top: 7px;
+  padding: 0px;
+  border-radius: 10px;
+  a {
+    padding: 5px;
+  }
+}
+
+/* typo */
+h1, h2, h3, h4, h5, h6 {
   line-height: 1;
-  &:hover {
-    color: white;
-    text-decoration: none;
+}
+
+/* News div */
+.news {
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  border: 1px solid $border_color;
+  background-color: $news_color;
+}
+.news .new_contact {
+  border: 1px solid $border_color;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  height: auto;
+  width: auto;
+  background-color: $news_c_color;
+  padding: 20px;
+}
+
+/* Error Message */
+body #error_explanation {
+  background-color: $news_c_color;
+  color: red;
+  border-radius: 10px;
+  border: 5px solid red;
+  h1, h2, h3, a{
+    font-size: 15px;
+    background-color: $news_c_color;
+    color: red;
+  }
+}
+
+.field_with_errors {
+  border-radius: 10px;
+  border: 2px solid red;
+  background-color: #CC5555;
+  margin-bottom: 10px;
+  input {
+    margin: 0;
   }
 }

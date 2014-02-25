@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  require 'rss/2.0'
 
   def index
     @topics = Topic.all
@@ -19,19 +20,27 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
-    if @topic.save
-      build_rss(rss_params)
-      redirect_to @topic
+    rss_save_status = build_rss(rss_params)
+    if rss_save_status
+      if @topic.save
+        redirect_to @topic
+      else
+        render :action => 'new'
+      end
     else
-      render :action => 'new'
+      render :action => 'edit' 
     end
   end
 
   def update
     @topic = Topic.find(params[:id])
-    if @topic.update(topic_params)
-      build_rss(rss_params)
-      render :action => 'edit'
+    rss_save_status = build_rss(rss_params)
+    if rss_save_status
+      if @topic.update(topic_params)
+        render :action => 'edit'
+      else
+        render :action => 'edit' 
+      end
     else
       render :action => 'edit' 
     end
@@ -54,6 +63,7 @@ class TopicsController < ApplicationController
      rss_params = params[:topic][:rsses_attributes]
     end
     def build_rss(rsses)
+      rss_save = true
       rsses.each do |key, value|
         if value["_destroy"] == "1"
           @topic.rsses.find(value["id"]).destroy
@@ -64,16 +74,16 @@ class TopicsController < ApplicationController
           rss.link = value["link"]
           rss.save
         else
-          all_rss, same = @topic.rsses.all, 0
-          all_rss.each do |rss|
-            if rss.link == value[:link] 
-              same = 1
-            end
-          end
-          unless same == 1
-            rss = @topic.rsses.new(value)
-            rss.save
-          end
+           all_rss, same = @topic.rsses.all, 0
+           all_rss.each do |rss|
+             if rss.link == value[:link] 
+               same = 1
+             end
+           end
+           unless same == 1
+             rss = @topic.rsses.new(value)
+             rss_save = rss.save
+           end
         end
       end
     end

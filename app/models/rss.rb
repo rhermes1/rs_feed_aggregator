@@ -3,16 +3,18 @@ class Rss < ActiveRecord::Base
   require 'rss/2.0'
   belongs_to :topic
   validates_presence_of :link
+  validate :validate_link
 
   def parse_rss_hash(topic_rss_array)
     rss_feed = RSS::Parser.parse(self.link, false)
     unless rss_feed == nil
       rss_feed.items.each do |item|
           news_feed = {
-                   :title   => include_wrong_utf(item.title).html_safe,
-                   :contact => include_wrong_utf(item.description),
-                   :date    => set_time(item.pubDate),
-                   :link    => self.link 
+               :title      => include_wrong_utf(item.title),
+               :title_link => item.link,
+               :contact    => include_wrong_utf(item.description),
+               :date       => set_time(item.pubDate),
+               :link       => self.link 
                    } 
         topic_rss_array << news_feed
       end
@@ -36,7 +38,7 @@ class Rss < ActiveRecord::Base
   end
   def include_wrong_utf(string)
     if string != nil
-    invalid_string = ["Ã¼", "Ã¶", "Ã¤", "Â"]
+    invalid_string = ["Ã¼", "Ã¶", "Ã¤", "Â", "Ã"]
       if invalid_string.any? {|invalid| string.include? invalid } 
           string = encode_string(string) 
       end
@@ -50,4 +52,10 @@ class Rss < ActiveRecord::Base
       return Time.now
     end
   end
+  private
+    def validate_link
+      if !link.blank? && RSS::Parser.parse(link, false) == nil
+        errors.add(:link, "is invalid")
+      end
+    end
 end

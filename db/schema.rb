@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140218090355) do
 
   create_table "topics", force: true do |t|
     t.string   "topic"
+    t.text     "all_rss"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,7 +1,10 @@
 <% provide(:title, "Edit Topic") %>
 <p></p>
+<div class="news">
 <%= render 'form' %>
 
 <%= link_to 'Back', root_path %> |
+<%= link_to 'Show Topic', @topic %> |
 <%= link_to 'Delete Topic', @topic, method: :delete,
   data: { confirm: 'Are you sure?' } %>
+</div>
