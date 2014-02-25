@@ -6,6 +6,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @all_topic_rss_feeds = @topic.get_all_topic_rss
   end
 
   def new
@@ -18,8 +19,8 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
-    build_rss(rss_params)
     if @topic.save
+      build_rss(rss_params)
       redirect_to @topic
     else
       render :action => 'new'
@@ -28,8 +29,8 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    build_rss(rss_params)
     if @topic.update(topic_params)
+      build_rss(rss_params)
       render :action => 'edit'
     else
       render :action => 'edit' 
@@ -58,9 +59,21 @@ class TopicsController < ApplicationController
           @topic.rsses.find(value["id"]).destroy
         elsif value["link"].blank? 
           next
-        else
-          rss = @topic.rsses.build(value)
+        elsif value.has_key?("id")
+          rss = @topic.rsses.find(value["id"]) 
+          rss.link = value["link"]
           rss.save
+        else
+          all_rss, same = @topic.rsses.all, 0
+          all_rss.each do |rss|
+            if rss.link == value[:link] 
+              same = 1
+            end
+          end
+          unless same == 1
+            rss = @topic.rsses.new(value)
+            rss.save
+          end
         end
       end
     end

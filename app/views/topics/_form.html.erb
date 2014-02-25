@@ -20,10 +20,9 @@
   <%= f.fields_for :rsses do |ff| %>
     <div>
       <%= ff.text_field :link %>
-  
       <% if ff.object.persisted? %>
-        <%= ff.check_box :_destroy %>
-        <%= ff.label :_destroy, "Destroy" %>
+        <p style="display: inline-block"><%= ff.check_box :_destroy %>
+        <%= ff.label :_destroy, "Delete Link" %></p>
       <% end %>
     </div>
   <% end %>

@@ -5,6 +5,9 @@
   <tbody>
     <% @topics.each do |topic| %>
         <h3><%= topic.topic %></h3>
+        <% topic.get_all_topic_rss.first(2).each do |new| %>
+          <p><%= new[:title]%></p>
+        <% end %>
         <%= link_to 'Show', topic %> |
         <%= link_to 'Edit', edit_topic_path(topic) %>
     <% end %>

@@ -1,3 +1,12 @@
+<%= link_to 'Back', root_path %>
 <% provide(:title, "Show Topic") %>
 <h1><%= @topic.topic %></h1>
+<% @all_topic_rss_feeds.first(10).each do |new| %>
+  <div style="background-color: white">
+    <h2><%= new[:title]%></h2>
+    <%= new[:contact] %>
+    <p><%= new[:date] %><p>
+    <p><%= new[:link] %><p>
+  </div>
+<% end %>
 <%= link_to 'Back', root_path %>
