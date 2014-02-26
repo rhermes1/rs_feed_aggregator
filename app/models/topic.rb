@@ -14,4 +14,13 @@ class Topic < ActiveRecord::Base
     end
     return all_topic_rss_feeds
   end
+
+  def self.search(search_values)
+    return [] if search_values.blank?
+    post_arel_table = self.arel_table
+    self.where(
+      post_arel_table[:topic].matches("%#{search_values}%").or(
+      post_arel_table[:all_rss].matches("%#{search_values}%"))).
+      order("#{table_name}.created_at desc")
+  end
 end

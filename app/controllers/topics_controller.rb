@@ -55,6 +55,13 @@ class TopicsController < ApplicationController
     end
   end
 
+  def search
+    @topics = Topic.search(params[:query])
+      respond_to do |format|
+      format.html { render :search }
+    end
+  end
+
   private
     def topic_params
       params.require(:topic).permit(:topic, :rsses_attributes)

@@ -1,5 +1,5 @@
 <% provide(:title, @topic.topic) %>
-<% @all_topic_rss_feeds.first(10).each do |new| %>
+<% @all_topic_rss_feeds.each do |new| %>
   <div class="news">
     <legend>
       <a href="<%= new[:title_link] %>">
