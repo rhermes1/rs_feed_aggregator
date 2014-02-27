@@ -1,7 +1,10 @@
 class Topic < ActiveRecord::Base
   serialize :all_rss, Array
+
   validates :topic, presence: true, uniqueness: true
+
   has_many :rsses
+  has_and_belongs_to_many :tags
 
   accepts_nested_attributes_for :rsses,
     :allow_destroy => true,

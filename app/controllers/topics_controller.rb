@@ -1,5 +1,4 @@
 class TopicsController < ApplicationController
-  require 'rss/2.0'
 
   def index
     @topics = Topic.all

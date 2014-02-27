@@ -1,0 +1,21 @@
+<%= form_for(@tag) do |f| %>
+ <% if @tag.errors.any? %>
+    <div id="error_explanation">
+      <h2><a>
+        <%= pluralize(@tag.errors.count, "error") %>
+        prohibited this topic from being saved:
+      </a></h2>
+      <ul>
+      <% @tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <legend><a>New Tag</a></legend>
+  <%= f.text_field :name %>
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-middle" %>
+  </div>
+<% end %>
