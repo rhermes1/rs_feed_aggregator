@@ -1,0 +1,20 @@
+<% provide(:title, @tag.name) %>
+<legend><a><%= @tag.name %><a></legend>
+  <% @sort_rss_topic_array.each do |new| %>
+    <div class="news">
+      <legend>
+        <a href="<%= new[:title_link] %>">
+          <%= new[:title]%>
+        </a>
+      </legend>
+      <div class="new_contact">
+        <%= new[:contact].html_safe if new[:contact] != nil %>
+      </div>
+      <small style="float: left;">
+        <a href="<%= new[:link] %>">
+          <%= new[:link] %>
+        </a>
+      </small>
+      <small style="float: right;"><a><%= new[:date] %></a></small>
+    </div>
+<% end %>

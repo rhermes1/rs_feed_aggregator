@@ -1,5 +1,10 @@
 <% @tags = Tag.all %>
 <legend><a>All Tags</a></legend>
 <% @tags.each do |tag| %>
-  <%= tag.name %>
+  <div  class="news float-left" style="display: inline-block" >
+  <legend><%= link_to tag.name, tag %></legend>
+  <% tag.topics.each do |topic| %>
+     <p><%= link_to topic.topic, topic %></p>
+  <% end %>
+  </div>
 <% end %>

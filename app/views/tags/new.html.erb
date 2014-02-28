@@ -1,11 +1,13 @@
 <% provide(:title, 'Tags') %>
 <div class="news">
-  <div class="tag_content">
+  <div class="new_contact">
     <%= render 'form' %>
   </div>
-  <div class="tag_content">
-    <%= render 'alltags' %>
-  </div>
+  <% if Tag.any? %>
+    <div class="new_contact">
+      <%= render 'alltags' %>
+    </div>
+  <% end %>
   <%= link_to 'Back', root_path %>
 </div>
 

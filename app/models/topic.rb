@@ -15,6 +15,8 @@ class Topic < ActiveRecord::Base
     self.rsses.each do |rss_feed|
       all_topic_rss_feeds = rss_feed.parse_rss_hash(all_topic_rss_feeds)
     end
+    self.all_rss = all_topic_rss_feeds
+    self.save
     return all_topic_rss_feeds
   end
 

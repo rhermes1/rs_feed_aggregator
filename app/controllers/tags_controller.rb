@@ -2,6 +2,7 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
+    @sort_rss_topic_array = @tag.sort_topics_rss
   end
   
   def new

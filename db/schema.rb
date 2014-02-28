@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227123804) do
+ActiveRecord::Schema.define(version: 20140228093045) do
 
   create_table "rsses", force: true do |t|
     t.string   "link"
@@ -43,14 +43,12 @@ ActiveRecord::Schema.define(version: 20140227123804) do
     t.datetime "updated_at"
   end
 
-  create_table "topictag", id: false, force: true do |t|
-    t.integer  "topic_id",   null: false
-    t.integer  "tag_id",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "topics_tags", id: false, force: true do |t|
+    t.integer "topic_id"
+    t.integer "tag_id"
   end
 
-  add_index "topictag", ["tag_id"], name: "index_topictag_on_tag_id"
-  add_index "topictag", ["topic_id"], name: "index_topictag_on_topic_id"
+  add_index "topics_tags", ["tag_id"], name: "index_topics_tags_on_tag_id"
+  add_index "topics_tags", ["topic_id"], name: "index_topics_tags_on_topic_id"
 
 end

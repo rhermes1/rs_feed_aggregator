@@ -5,7 +5,16 @@
     <% all_news += news[:title] + "++++" %>
   <% end %>
   <div class="news">
-    <legend><%= link_to topic.topic, topic %></legend>
+    <legend>
+      <%= link_to topic.topic, topic %>
+      <% if topic.tags.any? %>
+        <% topic.tags.each do |tag| %>
+          <small class="tag_style">
+            <%= link_to tag.name, tag %>
+          </small>
+        <% end %>
+      <% end %>
+   </legend>
     <div class="new_contact">
       <marquee scrollamount="5" scrolldelay="1">
         <b><%= all_news %></b>

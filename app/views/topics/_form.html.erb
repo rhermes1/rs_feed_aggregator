@@ -17,6 +17,10 @@
     <div class="field">
       <%= f.text_field :topic %>
     </div>
+    <% f.fields_for :tags do |tag| %>
+      <%= "mulitselect" %> 
+      
+    <% end %>
   </div>
 
   <div class="new_contact">
