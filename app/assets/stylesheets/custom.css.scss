@@ -94,3 +94,15 @@ body #error_explanation {
     margin: 0;
   }
 }
+
+/* token-input-style */
+body ul.token-input-list-facebook {
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  width: 210px;
+  background-color: white;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  li.token-input-input-token-facebook {
+    background-color: white;
+  }
+}

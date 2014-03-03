@@ -17,11 +17,14 @@
     <div class="field">
       <%= f.text_field :topic %>
     </div>
-    <% f.fields_for :tags do |tag| %>
-      <%= "mulitselect" %> 
-      
-    <% end %>
   </div>
+  <% if @topic.id != nil %>
+    <div class="new_contact">
+      <legend><a>Tags</a></legend>
+      <%= f.text_field :tag_tokens, "data-pre" =>
+        @topic.tags.map(&:attributes).to_json %>
+    </div>
+  <% end %>
 
   <div class="new_contact">
     <legend><a>Rss Link</a></legend>

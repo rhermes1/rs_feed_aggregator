@@ -63,11 +63,13 @@ class TopicsController < ApplicationController
 
   private
     def topic_params
-      params.require(:topic).permit(:topic, :rsses_attributes)
+      params.require(:topic).permit(:topic, :tag_tokens)
     end
+
     def rss_params
      rss_params = params[:topic][:rsses_attributes]
     end
+
     def build_rss(rsses)
       rss_save = true
       rsses.each do |key, value|

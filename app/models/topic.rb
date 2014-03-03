@@ -1,14 +1,20 @@
 class Topic < ActiveRecord::Base
   serialize :all_rss, Array
+  attr_reader :tag_tokens
 
   validates :topic, presence: true, uniqueness: true
 
   has_many :rsses
   has_and_belongs_to_many :tags
 
+  accepts_nested_attributes_for :tags
   accepts_nested_attributes_for :rsses,
     :allow_destroy => true,
     :reject_if     => lambda { |a| a[:content].blank? } 
+
+  def tag_tokens=(ids)
+    self.tag_ids = ids.split(",")  
+  end
 
   def get_all_topic_rss
     all_topic_rss_feeds = []

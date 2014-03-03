@@ -51,4 +51,14 @@ ActiveRecord::Schema.define(version: 20140228093045) do
   add_index "topics_tags", ["tag_id"], name: "index_topics_tags_on_tag_id"
   add_index "topics_tags", ["topic_id"], name: "index_topics_tags_on_topic_id"
 
+  create_table "topictag", id: false, force: true do |t|
+    t.integer  "topic_id",   null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topictag", ["tag_id"], name: "index_topictag_on_tag_id"
+  add_index "topictag", ["topic_id"], name: "index_topictag_on_topic_id"
+
 end
