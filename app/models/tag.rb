@@ -1,5 +1,6 @@
 class Tag < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
+  validates_length_of :description, :maximum => 255
   has_and_belongs_to_many :topics
 
   def sort_topics_rss

@@ -8,7 +8,7 @@
       </ul>
       <ul class="nav pull-right">
         <li class="header_link">
-          <%= link_to 'All Topics', root_path %>
+          <%= link_to 'Help', '#' %>
         </li>
         <li class="header_link">
           <%= link_to 'New Topic', new_topic_path %>
@@ -20,7 +20,7 @@
           :class =>"navbar-search pull-right") do %>
           <div class="input-append">
             <%= text_field_tag :query, nil, :class => "span2 search-query",
-              :placeholder => "let me look up" %>
+              :placeholder => "search" %>
           </div>
         <% end %>
       </ul>

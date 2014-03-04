@@ -11,6 +11,15 @@ a {
   }
 }
 
+p {
+  color: #888888;
+}
+
+dt {
+  color: #888888;
+  font-size: 16px;
+}
+
 #notice {
   color: green;
 }
@@ -20,6 +29,7 @@ a {
   background-color: red;
   display: table;
 }
+
 
 #error_explanation {
   width: 450px;

@@ -1,5 +1,8 @@
 <% provide(:title, @tag.name) %>
 <legend style="margin-bottom: 0px"><a><%= @tag.name %></a></legend>
+  <% unless @tag.description.blank? %>
+    <small><p><%= @tag.description %></p></small>
+  <% end %>
   <% @sort_rss_topic_array.each do |new| %>
     <div class="news">
       <legend>

@@ -6,9 +6,11 @@
         <%= new[:title]%>
       </a>
     </legend>
-    <div class="new_contact">
-      <%= new[:contact] %>
-    </div>
+    <% unless new[:contact].blank? %>
+      <div class="new_contact">
+        <%= new[:contact] %>
+      </div>
+    <% end %>
     <small style="float: left;">
       <a href="<%= new[:link] %>">
         <%= new[:link] %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140228093045) do
+ActiveRecord::Schema.define(version: 20140305080146) do
 
   create_table "rsses", force: true do |t|
     t.string   "link"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140228093045) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "tags_topics", id: false, force: true do |t|

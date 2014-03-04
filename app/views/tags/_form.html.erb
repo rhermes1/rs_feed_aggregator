@@ -14,8 +14,11 @@
   <% end %>
 
   <legend><a>New Tag</a></legend>
-  <%= f.text_field :name %>
-  <div class="actions">
-    <%= f.submit "Submit", class: "btn btn-middle" %>
-  </div>
+    <a><%= f.label :name %></a>
+    <%= f.text_field :name %>
+    <a><%= f.label :description %></a>
+    <%= f.text_area :description %>
+    <div class="actions">
+      <%= f.submit "Submit", class: "btn btn-middle" %>
+    </div>
 <% end %>

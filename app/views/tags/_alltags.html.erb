@@ -1,16 +1,14 @@
 <% @tags = Tag.all %>
 <legend><a>All Tags</a></legend>
+<dl>
 <% @tags.each do |tag| %>
-  <div  class="news float-left" style="display: inline-block" >
-  <legend>
-    <%= link_to tag.name, tag %>
-  <small>
+  <dt>
+    <%= tag.name %>
+  </dt>
+  <dd>
     <%= link_to 'Delete', tag, method: :delete,
-      data: { confirm: 'Are you sure?' }%>
-  </small>
-  </legend>
-  <% tag.topics.each do |topic| %>
-     <p><%= link_to topic.topic, topic %></p>
-  <% end %>
-  </div>
+      data: { confirm: 'Are you sure?' }%> |
+    <%= link_to 'Show', tag %>
+  </dd>
 <% end %>
+</dl>
