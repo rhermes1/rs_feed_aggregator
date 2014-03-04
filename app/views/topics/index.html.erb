@@ -1,8 +1,9 @@
 <% provide(:title, 'RSS Topics') %>
 <% @topics.each do |topic| %>
-  <% all_news = "++++" %>
+  <% all_news = "" %>
   <% topic.get_all_topic_rss.each do |news| %>
-    <% all_news += news[:title] + "++++" %>
+    <% new = '' + news[:title] + "" + "<br />" %>
+    <% all_news += new.html_safe %>
   <% end %>
   <div class="news">
     <legend>
@@ -16,8 +17,8 @@
       <% end %>
    </legend>
     <div class="new_contact">
-      <marquee scrollamount="5" scrolldelay="1">
-        <b><%= all_news %></b>
+      <marquee class="marquee_box" scrollamount="1"  direction="up">
+        <b class="marquee_text"><%= all_news.html_safe %></b>
       </marquee> 
     </div>
     <%= link_to 'Show', topic %> |
