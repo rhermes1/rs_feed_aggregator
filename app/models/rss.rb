@@ -36,6 +36,7 @@ class Rss < ActiveRecord::Base
                 .force_encoding("UTF-8")
      return string
   end
+
   def include_wrong_utf(string)
     if string != nil
     invalid_string = ["Ã¼", "Ã¶", "Ã¤", "Â", "Ã"]
@@ -45,6 +46,7 @@ class Rss < ActiveRecord::Base
     return string.html_safe
     end
   end
+
   def set_time(time)
     if time 
       return time 
@@ -52,6 +54,7 @@ class Rss < ActiveRecord::Base
       return Time.now
     end
   end
+
   private
     def validate_link
       if !link.blank? && RSS::Parser.parse(link, false) == nil

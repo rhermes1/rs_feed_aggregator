@@ -1,7 +1,7 @@
 <% provide(:title, 'RSS Topics') %>
 <% @topics.each do |topic| %>
   <% all_news = "++++" %>
-  <% topic.all_rss.each do |news| %>
+  <% topic.get_all_topic_rss.each do |news| %>
     <% all_news += news[:title] + "++++" %>
   <% end %>
   <div class="news">

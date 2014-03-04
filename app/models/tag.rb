@@ -5,7 +5,7 @@ class Tag < ActiveRecord::Base
   def sort_topics_rss
     sort_rss_topic_array = []
     self.topics.each do |topic|
-      topic.all_rss.each do |rss|
+      topic.get_all_topic_rss.each do |rss|
         sort_rss_topic_array << rss
       end
     end
