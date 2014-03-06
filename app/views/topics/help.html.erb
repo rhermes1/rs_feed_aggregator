@@ -1,0 +1,24 @@
+<% provide(:title, 'Help') %>
+<div class="news help">
+  <h2>Help</h2>
+    <p>Manage youre favorite RSS-Feeds</p>
+  <h3>Usability</h3>
+  <ul>
+    <li><b>Topic</b></li>
+    <%= link_to 'Create youre own Topic', new_topic_path %> and add 
+    some Rss-Links. Click on the Topic and enjoy youre RSS Feed sort by Date.
+    <li><b>Tags</b></li>
+    Create youre own Tag or take an existing Tag. Assign one or more Tags to 
+    your Topic or other Topics. Click on the Tag and see all Topic Rss Feeds
+    sort by Date.
+    <li><b>Search</b></li>
+    Search for existing Topics.
+    <li><b>General</b></li>
+    Click on the Logo <%= link_to 'Read Some Stuff', root_path %> to visit the 
+    root Path. The root Path shows all Topics and the latest Rss Headers. Click
+    on the Topic or the header to become up to date. 
+  </ul>
+  <small>Github:
+    <a href="https://github.com/rhermes1">https://github.com/rhermes1</a>
+  </small>
+</div>

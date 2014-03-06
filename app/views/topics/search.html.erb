@@ -4,7 +4,7 @@
       <legend><%= link_to result.topic, result %></legend>
         <div class="new_contact">
           <% result.rsses.each do |rss| %>
-            <li><%= rss.link %></li>
+            <a><%= link_to rss.link, rss.link %></a>
           <% end %>
         </div>
     <% end %>

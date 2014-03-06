@@ -3,5 +3,5 @@ RsFeedAggregator::Application.routes.draw do
   resources :topics
   resources :tags
   get '/search' => 'topics#search', :as => :search
-
+  get '/help'   => 'topics#help',   :as => :help 
 end

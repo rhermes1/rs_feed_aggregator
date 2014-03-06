@@ -61,6 +61,9 @@ class TopicsController < ApplicationController
     end
   end
 
+  def help
+  end
+
   private
     def topic_params
       params.require(:topic).permit(:topic, :tag_tokens)
